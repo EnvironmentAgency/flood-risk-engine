@@ -1,4 +1,4 @@
-class CreateLocations < ActiveRecord::Migration
+class CreateLocations < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_locations do |t|
       t.integer :address_id, index: true

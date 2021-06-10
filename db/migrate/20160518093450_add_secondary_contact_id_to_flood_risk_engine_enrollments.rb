@@ -1,4 +1,4 @@
-class AddSecondaryContactIdToFloodRiskEngineEnrollments < ActiveRecord::Migration
+class AddSecondaryContactIdToFloodRiskEngineEnrollments < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_enrollments, :secondary_contact_id, :integer
     add_foreign_key(

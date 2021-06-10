@@ -1,7 +1,7 @@
 require_dependency "has_secure_token"
 
 module FloodRiskEngine
-  class Address < ActiveRecord::Base
+  class Address < ApplicationRecord
 
     has_secure_token
 

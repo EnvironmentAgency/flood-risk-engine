@@ -1,4 +1,4 @@
-class AddCodeNumberToFloodRiskEngineExemptions < ActiveRecord::Migration
+class AddCodeNumberToFloodRiskEngineExemptions < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_exemptions, :code_number, :integer
 

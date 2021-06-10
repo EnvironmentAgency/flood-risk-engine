@@ -18,7 +18,7 @@ module FloodRiskEngine
         end
         expect(subject.application_name).to eq(FloodRiskEngine.config.application_name)
       end
-      it "it defaults to Rails.application.class.parent_name" do
+      it "it defaults to Rails.application.class.module_parent_name" do
         expect(subject.application_name).to eq("Dummy")
       end
     end

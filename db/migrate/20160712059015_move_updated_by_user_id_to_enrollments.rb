@@ -1,4 +1,4 @@
-class MoveUpdatedByUserIdToEnrollments < ActiveRecord::Migration
+class MoveUpdatedByUserIdToEnrollments < ActiveRecord::Migration[4.2]
   def change
 
     # Migration moved here from BO so specs can be run but so existing install don't break

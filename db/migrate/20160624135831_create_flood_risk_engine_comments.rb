@@ -1,4 +1,4 @@
-class CreateFloodRiskEngineComments < ActiveRecord::Migration
+class CreateFloodRiskEngineComments < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_comments do |t|
       t.integer :user_id

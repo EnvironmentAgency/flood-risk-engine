@@ -1,4 +1,4 @@
-class CreateAddressSearch < ActiveRecord::Migration
+class CreateAddressSearch < ActiveRecord::Migration[4.2]
 
   def change
 

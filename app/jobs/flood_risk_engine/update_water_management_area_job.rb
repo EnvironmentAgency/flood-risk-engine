@@ -23,7 +23,7 @@ module FloodRiskEngine
 
     def process_successful_response(area)
       WaterManagementArea.find_or_create_by(code: area.code) do |water_management_area|
-        water_management_area.update_attributes(
+        water_management_area.update(
           area_id: area.area_id,
           area_name: area.area_name,
           short_name: area.short_name,

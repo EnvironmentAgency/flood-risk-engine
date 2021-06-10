@@ -1,5 +1,5 @@
 module FloodRiskEngine
-  class Partner < ActiveRecord::Base
+  class Partner < ApplicationRecord
     belongs_to :organisation
     belongs_to :contact
 

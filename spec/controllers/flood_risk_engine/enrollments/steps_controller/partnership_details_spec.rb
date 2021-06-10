@@ -23,7 +23,7 @@ module FloodRiskEngine
         before do
           set_journey_token
           partner # ensure partner exists before page rendered
-          get :show, id: step, enrollment_id: enrollment
+          get :show, params: { id: step, enrollment_id: enrollment }
         end
 
         it "should render page successfully" do
@@ -47,7 +47,7 @@ module FloodRiskEngine
           end
           before do
             partner2 # ensure 2nd partner exists before page rendered
-            get :show, id: step, enrollment_id: enrollment
+            get :show, params: { id: step, enrollment_id: enrollment }
           end
 
           it "should display partner address" do

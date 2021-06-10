@@ -1,7 +1,7 @@
 require_dependency "has_secure_token"
 
 module FloodRiskEngine
-  class Enrollment < ActiveRecord::Base
+  class Enrollment < ApplicationRecord
     extend Concerns::StateMachineSwitcher
     self.default_state_machine = EnrollmentStateMachine
 

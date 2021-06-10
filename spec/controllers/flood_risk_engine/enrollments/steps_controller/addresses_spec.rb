@@ -19,15 +19,13 @@ module FloodRiskEngine
     context "LocalAuthorityAddressForm" do
       let(:step) { :local_authority_address }
 
-      before do
-        get :show, id: step, enrollment_id: enrollment
-      end
-
       it "uses LocalAuthorityAddressForm" do
+        get :show, params: { id: step, enrollment_id: enrollment }
         expect(controller.send(:form)).to be_a(reform_class)
       end
 
       it "diplays header" do
+        get :show, params: { id: step, enrollment_id: enrollment }
         expect(response.body).to have_tag :h1, text: /#{header_text}/
       end
 
@@ -48,7 +46,7 @@ module FloodRiskEngine
         end
 
         it "creates the address when valid UK UPRN supplied via drop down rendering process_address" do
-          put(:update, params, session)
+          put :update, params: params, session: session
 
           expect(enrollment.organisation.primary_address.address_type).to eq "primary"
           expect(enrollment.organisation.primary_address.addressable_id).to eq enrollment.organisation.id
@@ -72,12 +70,12 @@ module FloodRiskEngine
         let(:params) { { id: step, enrollment_id: enrollment }.merge(invalid_attributes) }
 
         it "assigns the enrollment as @enrollment" do
-          put(:update, params, session)
+          put :update, params: params, session: session
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
         it "redirects back to show with check for errors when user doesn't select address from dropdown" do
-          put(:update, params, session)
+          put :update, params: params, session: session
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
           )
@@ -87,14 +85,14 @@ module FloodRiskEngine
           params = { id: step, enrollment_id: enrollment, check_for_error: true }
           session = { error_params: { step => invalid_attributes } }
 
-          get(:show, params, session)
+          get :show, params: params, session: session
 
           expected_error = I18n.t("flood_risk_engine.validation_errors.uprn.blank")
           expect(response.body).to have_tag :a, text: expected_error
         end
 
         it "does not change the state" do
-          put(:update, params, session)
+          put :update, params: params, session: session
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
       end

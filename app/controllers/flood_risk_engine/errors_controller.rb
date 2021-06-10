@@ -36,7 +36,7 @@ module FloodRiskEngine
     end
 
     def exception
-      env["action_dispatch.exception"]
+      ENV["action_dispatch.exception"]
     end
 
     def enrollment

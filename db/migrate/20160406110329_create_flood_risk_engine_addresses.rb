@@ -1,4 +1,4 @@
-class CreateFloodRiskEngineAddresses < ActiveRecord::Migration
+class CreateFloodRiskEngineAddresses < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_addresses do |t|
       t.string :premises, limit: 200

@@ -23,11 +23,11 @@ module FloodRiskEngine
 
     # TODO: rename this method to something better. Style guide recommends
     # not using set_ at start of method
-    # rubocop:disable Style/AccessorMethodName
+    # rubocop:disable Naming/AccessorMethodName
     def set_step_as(step)
       restore!(step.to_sym)
     end
-    # rubocop:enable Style/AccessorMethodName
+    # rubocop:enable Naming/AccessorMethodName
 
     def rollback_to(step)
       current = current_step

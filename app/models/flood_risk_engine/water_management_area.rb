@@ -1,5 +1,5 @@
 module FloodRiskEngine
-  class WaterManagementArea < ActiveRecord::Base
+  class WaterManagementArea < ApplicationRecord
     has_many :locations, dependent: :restrict_with_exception
 
     validates :code, presence: true, uniqueness: true

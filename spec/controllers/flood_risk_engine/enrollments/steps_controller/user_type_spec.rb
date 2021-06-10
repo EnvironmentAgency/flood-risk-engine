@@ -13,7 +13,7 @@ module FloodRiskEngine
       let(:step) { "user_type" }
 
       it "uses UserTypeForm" do
-        get :show, id: step, enrollment_id: enrollment
+        get :show, params: { id: step, enrollment_id: enrollment }
         expect(controller.send(:form)).to be_a(Steps::UserTypeForm)
       end
     end

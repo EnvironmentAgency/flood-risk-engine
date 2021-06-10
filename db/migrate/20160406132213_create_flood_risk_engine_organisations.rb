@@ -1,4 +1,4 @@
-class CreateFloodRiskEngineOrganisations < ActiveRecord::Migration
+class CreateFloodRiskEngineOrganisations < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_organisations do |t|
       t.string :type

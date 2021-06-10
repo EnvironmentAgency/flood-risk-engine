@@ -1,4 +1,4 @@
-class AddUprnToAddress < ActiveRecord::Migration
+class AddUprnToAddress < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_addresses, :uprn, :string
 

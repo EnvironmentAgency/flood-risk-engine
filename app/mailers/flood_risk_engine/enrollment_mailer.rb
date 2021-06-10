@@ -1,8 +1,5 @@
 module FloodRiskEngine
-  class EnrollmentMailer < ActionMailer::Base
-    add_template_helper(EmailHelper)
-    layout "flood_risk_engine/layouts/mail"
-
+  class EnrollmentMailer < ApplicationMailer
     def submitted(enrollment_id:, recipient_address:)
       i18n_scope = "flood_risk_engine.enrollment_mailer.submitted"
       subject = I18n.t(".subject", scope: i18n_scope)

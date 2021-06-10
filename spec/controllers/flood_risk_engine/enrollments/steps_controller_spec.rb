@@ -13,7 +13,7 @@ module FloodRiskEngine
         end
 
         it "redirects_to error page" do
-          get :show, id: step, enrollment_id: enrollment
+          get :show, params: { id: step, enrollment_id: enrollment }
           expect(response).to redirect_to(error_path(:step_not_valid))
         end
 
@@ -24,7 +24,7 @@ module FloodRiskEngine
           end
 
           it "renders step page" do
-            get :show, id: step, enrollment_id: enrollment
+            get :show, params: { id: step, enrollment_id: enrollment }
             expect(response).to have_http_status(:success)
           end
 
@@ -37,7 +37,7 @@ module FloodRiskEngine
       context "step unknown" do
         it "redirects to current step" do
           set_journey_token
-          get :show, id: "unknown", enrollment_id: enrollment
+          get :show, params: { id: "unknown", enrollment_id: enrollment }
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step)
           )

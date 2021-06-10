@@ -13,7 +13,7 @@ module FloodRiskEngine
 
       before do
         set_journey_token
-        get :show, id: step, enrollment_id: enrollment
+        get :show, params: { id: step, enrollment_id: enrollment }
       end
 
       it "uses CorrespondenceContactNameForm" do
@@ -36,18 +36,18 @@ module FloodRiskEngine
 
         it "assigns the enrollment as @enrollment" do
           params = { id: step, enrollment_id: enrollment }.merge(invalid_attributes)
-          put(:update, params)
+          put :update, params: params
           expect(assigns(:enrollment)).to eq(enrollment)
         end
 
         it "does not change the state" do
           params = { id: step, enrollment_id: enrollment }.merge(invalid_attributes)
-          put(:update, params)
+          put :update, params: params
           expect(assigns(:enrollment).step).to eq(step.to_s)
         end
 
         it "redirects back to show with check for errors" do
-          put(:update, id: step, enrollment_id: enrollment, step => invalid_attributes)
+          put :update, params: { id: step, enrollment_id: enrollment, step => invalid_attributes }
           expect(response).to redirect_to(
             enrollment_step_path(enrollment, step, check_for_error: true)
           )
@@ -58,7 +58,7 @@ module FloodRiskEngine
           session = { error_params: { step => invalid_attributes } }
           expected_error = I18n.t("flood_risk_engine.validation_errors.full_name.invalid")
 
-          get(:show, params, session)
+          get :show, params: params, session: session
           expect(response.body).to have_tag :a, text: expected_error
         end
       end

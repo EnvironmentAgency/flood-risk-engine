@@ -1,5 +1,5 @@
 module FloodRiskEngine
-  class Organisation < ActiveRecord::Base
+  class Organisation < ApplicationRecord
     belongs_to :contact
     has_one :enrollment, dependent: :restrict_with_exception
     has_many :partners # Only needed for Partnerships

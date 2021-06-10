@@ -1,4 +1,4 @@
-class MakePolymorphicFloodRiskEngineLocations < ActiveRecord::Migration
+class MakePolymorphicFloodRiskEngineLocations < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_locations, :locatable_id, :integer
     add_column :flood_risk_engine_locations, :locatable_type, :string

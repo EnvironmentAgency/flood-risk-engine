@@ -8,7 +8,7 @@ module FloodRiskEngine
       let(:enrollment) { FactoryBot.create(:enrollment) }
       let(:model_class) { Location }
       let(:grid_reference) { "ST 58132 72695" }
-      let(:description) { Faker::Lorem.sentence(3) }
+      let(:description) { Faker::Lorem.sentence(word_count: 3) }
       let(:dredging_exemption) { FactoryBot.create(:exemption, code: "FRA23") }
       let(:dredging_length) { "" }
 
@@ -120,7 +120,7 @@ module FloodRiskEngine
         end
 
         context "with a long description" do
-          let(:description) { Faker::Lorem.characters(501) }
+          let(:description) { Faker::Lorem.characters(number: 501) }
           let(:error_message) { subject.errors.messages[:description] }
 
           it "should return false" do

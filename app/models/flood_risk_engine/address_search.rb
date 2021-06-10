@@ -1,5 +1,5 @@
 module FloodRiskEngine
-  class AddressSearch < ActiveRecord::Base
+  class AddressSearch < ApplicationRecord
     belongs_to :enrollment
   end
 end

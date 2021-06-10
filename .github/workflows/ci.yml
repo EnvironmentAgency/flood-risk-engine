@@ -51,8 +51,7 @@ jobs:
 
       - name: Database migrations
         run: |
-          RAILS_ENV=test bundle exec rake db:create --trace --trace
-          RAILS_ENV=test bundle exec rake db:migrate --trace --trace
+          RAILS_ENV=test bundle exec rails db:reset --trace --trace
       # Run linting first. No point running the tests if there is a linting issue
       - name: Run lint check
         run: |
@@ -64,8 +63,7 @@ jobs:
       # https://community.sonarsource.com/t/code-coverage-doesnt-work-with-github-action/16747/6
       - name: Run unit tests
         run: |
-          bundle exec rake test
-          bundle exec rspec
+          bundle exec rspec spec
           sed -i 's/\/home\/runner\/work\/flood-risk-engine\/flood-risk-engine\//\/github\/workspace\//g' coverage/.resultset.json
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master

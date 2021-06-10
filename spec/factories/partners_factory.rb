@@ -7,17 +7,17 @@ FactoryBot.define do
     street_address      { Faker::Address.street_address }
     locality            { Faker::Address.street_address }
     city                { Faker::Address.city }
-    postcode            "BS1 5AH"
+    postcode            { "BS1 5AH" }
   end
 
   factory :partner_contact, class: "FloodRiskEngine::Contact" do
-    title 1
-    full_name { Faker::Name.name }
-    suffix Faker::Name.suffix
-    date_of_birth { rand(20..50).years.ago }
-    position { Faker::Company.profession }
-    email_address { generate(:random_email) }
-    telephone_number { Faker::PhoneNumber.phone_number }
+    title               { 1 }
+    full_name           { Faker::Name.name }
+    suffix              { Faker::Name.suffix }
+    date_of_birth       { rand(20..50).years.ago }
+    position            { Faker::Company.profession }
+    email_address       { generate(:random_email) }
+    telephone_number    { Faker::PhoneNumber.phone_number }
 
     after(:create) { |object| object.address = create :partner_address }
   end

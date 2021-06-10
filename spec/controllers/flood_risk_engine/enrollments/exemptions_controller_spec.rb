@@ -19,7 +19,7 @@ module FloodRiskEngine
         let(:exemptions) { [exemption, other_exemption] }
 
         before do
-          delete :destroy, id: exemption, enrollment_id: enrollment
+          delete :destroy, params: { id: exemption, enrollment_id: enrollment }
         end
 
         describe "removing an exemption" do
@@ -39,7 +39,7 @@ module FloodRiskEngine
         let(:exemptions) { [exemption] }
 
         before do
-          delete :destroy, id: exemption, enrollment_id: enrollment
+          delete :destroy, params: { id: exemption, enrollment_id: enrollment }
         end
 
         describe "removing an exemption" do
@@ -60,7 +60,7 @@ module FloodRiskEngine
       let(:exemptions) { [exemption, other_exemption] }
 
       before do
-        get :show, id: exemption, enrollment_id: enrollment
+        get :show, params: { id: exemption, enrollment_id: enrollment }
       end
 
       describe "removing an exemption" do

@@ -20,11 +20,11 @@ module FloodRiskEngine
           with_easting_and_northing = create(:location, easting: "123.45", northing: "123.45")
 
           # Bypass before save filter
-          create(:location).update_attributes(easting: "123.45", northing: "")
-          create(:location).update_attributes(easting: "123.45", northing: "")
-          create(:location).update_attributes(easting: "", northing: "123.45")
-          create(:location).update_attributes(easting: "", northing: "123.45")
-          create(:location).update_attributes(easting: nil, northing: nil)
+          create(:location).update(easting: "123.45", northing: "")
+          create(:location).update(easting: "123.45", northing: "")
+          create(:location).update(easting: "", northing: "123.45")
+          create(:location).update(easting: "", northing: "123.45")
+          create(:location).update(easting: nil, northing: nil)
 
           expect(described_class.with_easting_and_northing).to match_array([with_easting_and_northing])
         end

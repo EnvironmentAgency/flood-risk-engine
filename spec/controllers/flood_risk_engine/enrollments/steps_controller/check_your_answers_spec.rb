@@ -28,7 +28,7 @@ module FloodRiskEngine
     before do
       set_journey_token
       partner # ensure partner is built (if present) before get
-      get :show, id: step, enrollment_id: enrollment
+      get :show, params: { id: step, enrollment_id: enrollment }
     end
 
     it "uses the correct form class" do

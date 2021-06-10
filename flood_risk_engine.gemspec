@@ -17,10 +17,10 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "activerecord-session_store", "~> 1.0"
+  s.add_dependency "activerecord-session_store", "~> 2.0"
   # Airbrake catches exceptions and sends them to our instances of Errbit
   # defra_ruby_alert is a gem we created to manage airbrake across projects
-  s.add_dependency "defra_ruby_alert", "~> 0.1.0"
+  s.add_dependency "defra_ruby_alert", "~> 2.1.1"
   # Manages data seeding
   s.add_dependency "dibber", "~> 0.5"
   # Env Vars drive some config. This loads environment variables from .env
@@ -28,28 +28,30 @@ Gem::Specification.new do |s|
   # Used for address lookups on OS Places
   s.add_dependency "defra_ruby_address"
   # Used to determine the EA area for a registered exemption
-  s.add_dependency "defra_ruby_area"
+  s.add_dependency "defra_ruby_area", "~> 2.0"
   # Used as part of testing. When enabled adds a /email/last-email route from
   # which details of the last email sent by the app can be accessed
-  s.add_dependency "defra_ruby_email"
+  s.add_dependency "defra_ruby_email", "~> 1.1"
   s.add_dependency "finite_machine", "~> 0.11.3"
   # Enables url obfuscation with 24bit base58 token
   s.add_dependency "has_secure_token", "~> 1.0.0"
   # Rails engine for static pages. https://github.com/thoughtbot/high_voltage
   s.add_dependency "high_voltage", "~> 3.0"
   s.add_dependency "jquery-rails", ">= 3.1"
-  # Used by other gems - but need to force version due to CVE-2015-8806
-  s.add_dependency "nokogiri", ">= 1.6.8"
+  s.add_dependency "nokogiri", ">= 1.11"
   s.add_dependency "os_map_ref", "0.4.2"
   # Add telephone number validation
   s.add_dependency "phonelib", "~> 0.6"
-  s.add_dependency "rails", "~> 4.2"
-  # Form object convenience - fixing this version as later versions cause issues
-  s.add_dependency "reform", "2.1.0"
-  # Form object convenience - fixing this version as later versions cause issues
-  s.add_dependency "reform-rails", "0.1.0"
+  s.add_dependency "rails", "~> 6.0"
+  # Form object convenience
+  s.add_dependency "reform", "2.6"
+  # Form object convenience (requires reform)
+  s.add_dependency "reform-rails", "0.2.2"
   # ActiveJob background processing using another thread
   s.add_dependency "sucker_punch", "~> 2.0.2"
+  # The "sync" gem has been removed from ruby 2.17 https://bugs.ruby-lang.org/issues/16170
+  # Unfortunately, it is used by finite_machine, so we ensure it is here
+  s.add_dependency "sync"
   # Postcode format validation
   s.add_dependency "uk_postcode", "~> 2.1"
   # Validate e-mail addresses against RFC 2822 and RFC 3696
@@ -67,8 +69,6 @@ Gem::Specification.new do |s|
   # https://github.com/skywinder/github-changelog-generator#github-token
   s.add_development_dependency "github_changelog_generator"
   s.add_development_dependency "pg", "~> 0.18"
-  # Mutes assets pipeline log messages
-  s.add_development_dependency "quiet_assets", "~> 1.1"
   # Used to ensure the code base matches our agreed styles and conventions
   s.add_development_dependency "rubocop", "0.52"
   s.add_development_dependency "sass-rails", "~> 5.0.4"

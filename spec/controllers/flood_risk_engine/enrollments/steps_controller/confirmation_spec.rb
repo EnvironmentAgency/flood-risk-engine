@@ -12,7 +12,7 @@ module FloodRiskEngine
 
       before do
         set_journey_token
-        get :show, id: step, enrollment_id: enrollment
+        get :show, params: { id: step, enrollment_id: enrollment }
       end
 
       it "uses ConfirmationForm" do

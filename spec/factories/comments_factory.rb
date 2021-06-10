@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :comment, class: "FloodRiskEngine::Comment" do
-    user_id nil
+    user_id     { nil }
     association :commentable, factory: :enrollment_exemption
-    content Faker::Lorem.paragraph
-    event Faker::Lorem.sentence
+    content     { Faker::Lorem.paragraph }
+    event       { Faker::Lorem.sentence }
 
     created_at do
       from = 1.year.ago.to_f

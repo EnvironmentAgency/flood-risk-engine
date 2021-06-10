@@ -15,11 +15,7 @@ module FloodRiskEngine
         expect_any_instance_of(Steps::BaseForm).to(
           receive(:validate).and_return(validation_result)
         )
-        put(
-          :update,
-          id: step,
-          enrollment_id: enrollment
-        )
+        put :update, params: { id: step, enrollment_id: enrollment }
       end
 
       context "on success" do

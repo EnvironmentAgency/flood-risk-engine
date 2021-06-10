@@ -6,13 +6,13 @@ module FloodRiskEngine
     render_views
     describe "#show" do
       it "renders error templates when known" do
-        get :show, id: "401"
+        get :show, params: { id: "401" }
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:error_401)
       end
 
       it "renders generic when not known" do
-        get :show, id: "unknown"
+        get :show, params: { id: "unknown" }
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:error_generic)
       end

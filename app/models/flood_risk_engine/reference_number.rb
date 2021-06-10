@@ -1,5 +1,5 @@
 module FloodRiskEngine
-  class ReferenceNumber < ActiveRecord::Base
+  class ReferenceNumber < ApplicationRecord
     PREFIX = "EXFRA".freeze
     PADDING = "0".freeze
     OFFSET = 1_000

@@ -46,7 +46,7 @@ EOS
 
         record_value = record_value.to_s
 
-      elsif expected.is_a?(Fixnum) && record_value.is_a?(String)
+      elsif expected.is_a?(Integer) && record_value.is_a?(String)
         # could be an enum index => being converted to its string form
         # .. so check if it responds to enum methods
         next if record.class.respond_to?(field.pluralize) && record.respond_to?("#{record_value}?")

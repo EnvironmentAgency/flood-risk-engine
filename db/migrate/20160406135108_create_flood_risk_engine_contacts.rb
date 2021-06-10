@@ -1,4 +1,4 @@
-class CreateFloodRiskEngineContacts < ActiveRecord::Migration
+class CreateFloodRiskEngineContacts < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_contacts do |t|
       t.integer :contact_type, null: false, default: 0

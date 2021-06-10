@@ -14,17 +14,17 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara", "~> 2.6"
-  gem "database_cleaner", "~> 1.5"
+  gem "capybara", "~> 3.35.3"
+  gem "database_cleaner", "~> 2.0.1"
   gem "email_spec"
-  gem "factory_bot_rails", "~> 4.7"
-  gem "faker", "~> 1.7"
-  gem "guard-rspec", require: false
+  gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 2.17.0"
   gem "poltergeist", "~> 1.9" # Needed for headless testing with Javascript or pages that ref external sites
+  gem "rails-controller-testing"
   gem "rspec-html-matchers"
-  gem "rspec-rails", "~> 3.4"
-  gem "shoulda-matchers", "~> 3.1", require: false
-  gem "simplecov", "~> 0.13.0", require: false
-  gem "vcr", "~> 3.0"
-  gem "webmock", "~> 1.24"
+  gem "rspec-rails", "~> 5.0.1"
+  gem "shoulda-matchers", "~> 4.5.1", require: false
+  gem "simplecov", "~> 0.21.2", require: false
+  gem "vcr", "~> 6.0.0"
+  gem "webmock", "~> 3.13"
 end

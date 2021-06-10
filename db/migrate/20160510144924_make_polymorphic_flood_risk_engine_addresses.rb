@@ -1,4 +1,4 @@
-class MakePolymorphicFloodRiskEngineAddresses < ActiveRecord::Migration
+class MakePolymorphicFloodRiskEngineAddresses < ActiveRecord::Migration[4.2]
   def up
     # Enrollments
     remove_foreign_key :flood_risk_engine_enrollments,

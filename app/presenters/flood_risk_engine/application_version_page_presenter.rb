@@ -3,7 +3,7 @@ module FloodRiskEngine
   class ApplicationVersionPagePresenter
 
     def application_name
-      FloodRiskEngine.config.application_name || Rails.application.class.parent_name
+      FloodRiskEngine.config.application_name || Rails.application.class.module_parent_name
     end
 
     def application_version

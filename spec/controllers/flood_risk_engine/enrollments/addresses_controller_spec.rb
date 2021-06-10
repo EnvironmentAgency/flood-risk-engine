@@ -20,11 +20,13 @@ module FloodRiskEngine
         before do
           get(
             :new,
-            enrollment_id: enrollment,
-            postcode: postcode,
-            addressable_type: addressable_type,
-            addressable_id: addressable_id,
-            address_type: address_type
+            params: {
+              enrollment_id: enrollment,
+              postcode: postcode,
+              addressable_type: addressable_type,
+              addressable_id: addressable_id,
+              address_type: address_type
+            }
           )
         end
 
@@ -42,14 +44,16 @@ module FloodRiskEngine
           expect do
             post(
               :create,
-              enrollment_id: enrollment,
-              postcode: postcode,
-              addressable_type: addressable_type,
-              addressable_id: addressable_id,
-              address_type: address_type,
-              flood_risk_engine_address: address.attributes.select do |attr, _value|
-                %i[premises street_address locality city].include? attr
-              end
+              params: {
+                enrollment_id: enrollment,
+                postcode: postcode,
+                addressable_type: addressable_type,
+                addressable_id: addressable_id,
+                address_type: address_type,
+                flood_risk_engine_address: address.attributes.select do |attr, _value|
+                  %i[premises street_address locality city].include? attr
+                end
+              }
             )
           end.to change { Address.count }.by(address_count_change)
         end
@@ -90,7 +94,7 @@ module FloodRiskEngine
 
       describe "edit action" do
         before do
-          get :edit, id: address, enrollment_id: enrollment
+          get :edit, params: { id: address, enrollment_id: enrollment }
         end
 
         it "should render page sucessfully" do
@@ -105,9 +109,11 @@ module FloodRiskEngine
           )
           put(
             :update,
-            id: address,
-            enrollment_id: enrollment,
-            flood_risk_engine_address: address.attributes
+            params: {
+              id: address,
+              enrollment_id: enrollment,
+              flood_risk_engine_address: address.attributes
+            }
           )
         end
 

@@ -22,7 +22,7 @@ module FloodRiskEngine
 
       describe "show action" do
         before do
-          get :show, id: partner, enrollment_id: enrollment
+          get :show, params: { id: partner, enrollment_id: enrollment }
         end
 
         it "should render page successfully" do
@@ -38,7 +38,7 @@ module FloodRiskEngine
 
       describe "edit action" do
         before do
-          get :edit, id: partner, enrollment_id: enrollment
+          get :edit, params: { id: partner, enrollment_id: enrollment }
         end
 
         it "should change step to first partnership step" do
@@ -55,7 +55,7 @@ module FloodRiskEngine
       describe "destroy" do
         context "via post" do
           before do
-            post :destroy, id: partner, enrollment_id: enrollment
+            post :destroy, params: { id: partner, enrollment_id: enrollment }
           end
 
           it "should delete the partner" do
@@ -75,7 +75,7 @@ module FloodRiskEngine
 
         context "via delete" do
           before do
-            delete :destroy, id: partner, enrollment_id: enrollment
+            delete :destroy, params: { id: partner, enrollment_id: enrollment }
           end
 
           it "should delete the partner" do
@@ -106,7 +106,7 @@ module FloodRiskEngine
 
           before do
             partner2 # ensure 2nd partner exists before action called
-            delete :destroy, id: partner, enrollment_id: enrollment
+            delete :destroy, params: { id: partner, enrollment_id: enrollment }
           end
 
           it "should delete the partner" do

@@ -16,7 +16,7 @@ module FloodRiskEngine
       context "show action" do
         before do
           set_journey_token
-          get :show, id: step, enrollment_id: enrollment
+          get :show, params: { id: step, enrollment_id: enrollment }
         end
 
         describe "current step (step == enrollment.step)" do

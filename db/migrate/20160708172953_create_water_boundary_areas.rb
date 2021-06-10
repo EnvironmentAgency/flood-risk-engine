@@ -1,4 +1,4 @@
-class CreateWaterBoundaryAreas < ActiveRecord::Migration
+class CreateWaterBoundaryAreas < ActiveRecord::Migration[4.2]
   def change
     create_table :flood_risk_engine_water_boundary_areas do |t|
       # These names map to the names in the api output in geo lookups

@@ -1,14 +1,14 @@
 require "os_map_ref"
 
 module FloodRiskEngine
-  class Location < ActiveRecord::Base
+  class Location < ApplicationRecord
     belongs_to :locatable, polymorphic: true
     belongs_to :water_management_area
 
     before_save :process_grid_reference
 
     scope :missing_area, -> { where(water_management_area: nil) }
-    scope :with_easting_and_northing, -> { where.not(easting: [nil, ""], northing: [nil, ""]) }
+    scope :with_easting_and_northing, -> { where.not(easting: [nil, ""]).where.not(northing: [nil, ""]) }
 
     # rubocop:disable Style/Lambda
     # This version of ruby does not like lambdas here
