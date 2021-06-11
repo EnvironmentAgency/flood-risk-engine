@@ -45,6 +45,7 @@ module FloodRiskEngine
         response = AddressLookupService.run(postcode)
 
         Rails.logger.info "***** LOOKUP: *****"
+        Rails.logger.info url
         Rails.logger.info response.successful?
         Rails.logger.info response.results
         Rails.logger.info response.error
@@ -83,6 +84,18 @@ module FloodRiskEngine
           @manual_entry_enabled = true
           false
         end
+      end
+
+      def url
+        host = DefraRuby::Address.configuration.host
+        client_id = DefraRuby::Address.configuration.client_id
+        key = DefraRuby::Address.configuration.key
+
+        File.join(
+          host,
+          "/address-service/v1/addresses/",
+          "postcode?client-id=#{client_id}&key=#{key}&#{param_name}=#{postcode}"
+        )
       end
     end
 
