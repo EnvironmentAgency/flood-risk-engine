@@ -44,6 +44,11 @@ module FloodRiskEngine
       def look_up_addresses
         response = AddressLookupService.run(postcode)
 
+        Rails.logger.info "***** LOOKUP: *****"
+        Rails.logger.info response.successful?
+        Rails.logger.info response.results
+        Rails.logger.info response.error
+
         return true if response.successful?
 
         if response.error == DefraRuby::Address::NoMatchError
