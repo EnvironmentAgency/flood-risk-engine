@@ -1,15 +1,29 @@
-<%= render("flood_risk_engine/shared/back", back_path: back_exemption_forms_path(@exemption_form.token)) %>
+<%= form_for(@exemption_form) do |f| %>
+  <%= render("flood_risk_engine/shared/errors", object: @exemption_form) %>
 
-<div class="text">
-  <%= form_for(@exemption_form) do |f| %>
-    <%= render("flood_risk_engine/shared/errors", object: @exemption_form) %>
+  <legend class="govuk-visually-hidden">
+    <%= t(".heading") %>
+  </legend>
 
-    <h1 class="heading-large"><%= t(".heading") %></h1>
+  <h1 class="govuk-heading-l">
+    <%= t(".heading") %>
+  </h1>
 
-    <%= hidden_field_tag :token, @exemption_form.token %>
+  <%= hidden_field_tag :token, @exemption_form.token %>
 
-    <div class="form-group">
-      <%= f.submit t(".next_button"), class: "button" %>
-    </div>
-  <% end %>
-</div>
+  <%=
+    f.govuk_collection_radio_buttons :exemption_id,
+    @exemption_form.all_exemptions,
+    :id, :radio_button_label,
+    small: true,
+    legend: { text: "" },
+    hint: {
+      text:
+        [
+          t(".lead_paragraph.text_1"),
+          t(".lead_paragraph.text_2")
+        ].join("<br/>").html_safe
+    }
+  %>
+  <%= f.govuk_submit t(".next_button") %>
+<% end %>

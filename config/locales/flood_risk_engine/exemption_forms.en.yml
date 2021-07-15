@@ -2,5 +2,8 @@ en:
   flood_risk_engine:
     exemption_forms:
       new:
-        heading: "Select exemption"
-        next_button: "Submit"
+        heading: Select the exemption you want to register
+        lead_paragraph:
+          text_1: You can only register one exemption at a time.
+          text_2: If you need more than one, please make a new registration for each.
+        next_button: Continue

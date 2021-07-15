@@ -8,6 +8,8 @@ module FloodRiskEngine
     before_action :back_button_cache_buster
     before_action :validate_token
 
+    default_form_builder GOVUKDesignSystemFormBuilder::FormBuilder
+
     # Expects a form class name (eg BusinessTypeForm) and a snake_case name for the form (eg business_type_form)
     def new(form_class, form)
       return false unless set_up_form(form_class, form, params[:token], true)
